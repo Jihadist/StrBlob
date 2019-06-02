@@ -53,6 +53,34 @@ StrBlobPtr & StrBlobPtr::operator--(int)
 	return ret;
 }
 
+StrBlobPtr & StrBlobPtr::operator+=(size_t n)
+{
+	curr += n;
+	check(curr, "increment past end of StrBlobPtr");
+	return *this;
+}
+
+StrBlobPtr & StrBlobPtr::operator-=(size_t n)
+{
+	curr -= n;
+	check(curr, "increment past end of StrBlobPtr");
+	return *this;
+}
+
+StrBlobPtr StrBlobPtr::operator+(size_t n) const
+{
+	StrBlobPtr ret = *this;
+	ret += n;
+	return ret;
+}
+
+StrBlobPtr StrBlobPtr::operator-(size_t n) const
+{
+	StrBlobPtr ret = *this;
+	ret += n;
+	return ret;
+}
+
 std::string& StrBlobPtr::deref() const
 {
 	auto p = check(curr, "dereference past end");
@@ -65,6 +93,26 @@ StrBlobPtr& StrBlobPtr::incr()
 	++curr;
 	return *this;
 }
+
+#if 0
+Sales_data Sales_data::operator+(const Sales_data & rhs)
+{
+	if (this->bookNo == rhs.bookNo)
+	{
+		Sales_data ret;
+		ret.units_sold = this->units_sold + rhs.units_sold;
+		ret.revenue = this->revenue + rhs.revenue;
+		return ret;
+	}
+	return *this;
+}
+Sales_data Sales_data::operator+=(const Sales_data & rhs)
+{
+	Sales_data sum = *this;
+	sum += rhs;
+	return sum;
+}
+#endif // 0
 
 bool operator==(const StrBlobPtr &lhs, const StrBlobPtr &rhs)
 {

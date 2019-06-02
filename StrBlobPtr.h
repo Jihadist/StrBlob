@@ -11,6 +11,7 @@ public:
 
 	std::string& operator[](size_t n);
 	const std::string& operator[](size_t n) const;
+
 	friend bool operator==(const StrBlobPtr&, const StrBlobPtr&);
 	friend bool operator!=(const StrBlobPtr&, const StrBlobPtr&);
 	friend bool operator<(const StrBlobPtr&, const StrBlobPtr&);
@@ -21,6 +22,10 @@ public:
 	StrBlobPtr& operator--();
 	StrBlobPtr& operator++(int);
 	StrBlobPtr& operator--(int);
+	StrBlobPtr& operator+=(size_t);
+	StrBlobPtr& operator-=(size_t);
+	StrBlobPtr operator+(size_t) const;
+	StrBlobPtr operator-(size_t) const;
 
 	std::string& deref() const;
 	StrBlobPtr& incr();
