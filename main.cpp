@@ -139,6 +139,8 @@ void pointer()
 		std::cout << "a";
 	if (test11 == test21)
 		std::cout << "b\n";
+	test11++;
+	++test12;
 }
 
 
@@ -159,6 +161,7 @@ int main()
 	LessTest2.push_back("hello");
 	compare(LessTest1, LessTest2);
 	std::cout << LessTest1[0];
+	pointer();
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"

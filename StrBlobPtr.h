@@ -17,6 +17,10 @@ public:
 	friend bool operator>(const StrBlobPtr&, const StrBlobPtr&);
 	friend bool operator<=(const StrBlobPtr&, const StrBlobPtr&);
 	friend bool operator>=(const StrBlobPtr&, const StrBlobPtr&);
+	StrBlobPtr& operator++();
+	StrBlobPtr& operator--();
+	StrBlobPtr& operator++(int);
+	StrBlobPtr& operator--(int);
 
 	std::string& deref() const;
 	StrBlobPtr& incr();
