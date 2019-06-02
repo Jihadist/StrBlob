@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "StrBlobPtr.h"
+#include <functional>
 
 
 std::shared_ptr<std::vector<std::string>> StrBlobPtr::check(size_t i, const std::string& msg) const
@@ -10,6 +11,18 @@ std::shared_ptr<std::vector<std::string>> StrBlobPtr::check(size_t i, const std:
 	if (i >= ret->size())
 		throw std::out_of_range(msg);
 	return ret;
+}
+
+std::string & StrBlobPtr::operator[](size_t n)
+{
+	auto p = check(n, "dereference out of range.");
+	return (*p)[n];
+}
+
+const std::string & StrBlobPtr::operator[](size_t n) const
+{
+	auto p = check(n, "dereference out of range.");
+	return (*p)[n];
 }
 
 std::string& StrBlobPtr::deref() const
