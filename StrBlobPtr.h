@@ -26,6 +26,8 @@ public:
 	StrBlobPtr& operator-=(size_t);
 	StrBlobPtr operator+(size_t) const;
 	StrBlobPtr operator-(size_t) const;
+	std::string& operator*() const;
+	std::string* operator->() const;
 
 	std::string& deref() const;
 	StrBlobPtr& incr();

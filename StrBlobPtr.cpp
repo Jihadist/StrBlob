@@ -81,6 +81,17 @@ StrBlobPtr StrBlobPtr::operator-(size_t n) const
 	return ret;
 }
 
+std::string & StrBlobPtr::operator*() const
+{
+	auto p = check(curr, "dereference past end");
+	return (*p)[curr];
+}
+
+std::string * StrBlobPtr::operator->() const
+{
+	return &this->operator*();
+}
+
 std::string& StrBlobPtr::deref() const
 {
 	auto p = check(curr, "dereference past end");
