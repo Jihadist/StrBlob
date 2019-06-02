@@ -1,3 +1,4 @@
+#pragma once
 #include "pch.h"
 #include "StrBlob.h"
 #include <string>

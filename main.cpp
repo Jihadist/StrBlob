@@ -6,6 +6,7 @@
 #include <iostream>
 #include <memory>
 #include "StrBlobPtr.h"
+#include "StrBlobPtrPtr.h"
 
 std::vector<int> *returner()
 {
@@ -141,6 +142,8 @@ void pointer()
 		std::cout << "b\n";
 	test11++;
 	++test12;
+	StrBlobPtrPtr tested(test11);
+	std::cout<<tested.operator->()->operator[](0);
 }
 
 
