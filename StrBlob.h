@@ -16,6 +16,8 @@ public:
 	StrBlobPtr begin();
 	StrBlobPtr end();
 
+	std::string& operator[](size_t n);
+	const std::string& operator[](size_t n) const;
 	friend bool operator==(const StrBlob&, const StrBlob&);
 	friend bool operator!=(const StrBlob&, const StrBlob&);
 	friend bool operator>(const StrBlob&, const StrBlob&);

@@ -158,6 +158,7 @@ int main()
 	StrBlob LessTest2;
 	LessTest2.push_back("hello");
 	compare(LessTest1, LessTest2);
+	std::cout << LessTest1[0];
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"

@@ -37,6 +37,18 @@ StrBlobPtr StrBlob::end()
 	return StrBlobPtr(*this, data->size());
 }
 
+std::string & StrBlob::operator[](size_t n)
+{
+	check(n, "out of range");
+	return data->at(n);
+}
+
+const std::string & StrBlob::operator[](size_t n) const
+{
+	check(n, "out of range");
+	return data->at(n);
+}
+
 bool operator==(const StrBlob &lhs, const StrBlob &rhs)
 {
 	return *lhs.data==*rhs.data;
