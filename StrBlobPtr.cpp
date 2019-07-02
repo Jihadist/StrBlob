@@ -105,6 +105,13 @@ StrBlobPtr& StrBlobPtr::incr()
 	return *this;
 }
 
+StrBlobPtr& StrBlobPtr::decr()
+{
+	--curr;
+	check(-1, "decrement past begin of StrBlobPtr");
+	return *this;
+}
+
 #if 0
 Sales_data Sales_data::operator+(const Sales_data & rhs)
 {
@@ -124,6 +131,18 @@ Sales_data Sales_data::operator+=(const Sales_data & rhs)
 	return sum;
 }
 #endif // 0
+
+bool eq(const StrBlobPtr&lhs, const StrBlobPtr&rhs)
+{
+	auto l = lhs.wptr.lock(), r = rhs.wptr.lock();
+	// if the underlying vector is the same 
+	if (l == r)
+		// then they're equal if they're both null or 
+		// if they point to the same element
+		return (!r || lhs.curr == rhs.curr);
+	else
+		return false;
+}
 
 bool operator==(const StrBlobPtr &lhs, const StrBlobPtr &rhs)
 {

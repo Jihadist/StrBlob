@@ -5,11 +5,13 @@
 
 class StrBlobPtr
 {
+	friend bool eq(const StrBlobPtr&, const StrBlobPtr&);
 public:
 
 	StrBlobPtr():curr(0){}
 	StrBlobPtr(StrBlob &a, size_t sz=0):wptr(a.data),curr(sz){}
 
+	StrBlobPtr(const StrBlob& a, const size_t sz = 0) : wptr(a.data), curr(sz) { }
 	std::string& operator[](size_t n);
 	const std::string& operator[](size_t n) const;
 
@@ -32,6 +34,7 @@ public:
 
 	std::string& deref() const;
 	StrBlobPtr& incr();
+	StrBlobPtr& decr();
 private:
 	std::shared_ptr<std::vector<std::string>>
 		check(size_t, const std::string &) const;
